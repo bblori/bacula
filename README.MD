@@ -1,6 +1,6 @@
-# Centos 7
 
-### Bacula Server telepítése Centos 7-re.
+
+# Bacula Server telepítése Centos 7-re.
 
 	# sudo yum install -y bacula-director bacula-storage bacula-console bacula-client mariadb-server
 
@@ -10,7 +10,6 @@
 
 ### Adatbázis létrehozása
 
-	```
 	# /usr/libexec/bacula/grant_mysql_privileges
 	# /usr/libexec/bacula/create_mysql_database -u root
 	# /usr/libexec/bacula/make_mysql_tables -u bacula
@@ -20,7 +19,7 @@
 	UPDATE mysql.user SET Password=PASSWORD('jelszavad’) WHERE User='bacula';
 	FLUSH PRIVILEGES;
 	exit
-	```
+	
 
 ### Boot inditás
 
@@ -90,5 +89,3 @@
 	ERR=Permission denied
 
 	# /etc/selinux/config  csere permissive-re
-
-//--------------------------------------------------//
