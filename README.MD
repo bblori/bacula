@@ -1,30 +1,32 @@
-			Centos 7
+# Centos 7
 
-Bacula Server telepítése Centos 7-re.
+### Bacula Server telepítése Centos 7-re.
 
-	````# sudo yum install -y bacula-director bacula-storage bacula-console bacula-client mariadb-server````
+	``` # sudo yum install -y bacula-director bacula-storage bacula-console bacula-client mariadb-server ```
 
-MYSQL
+### MYSQL
 
 	# sudo systemctl start mariadb
 
-Adatbázis létrehozása
+### Adatbázis létrehozása
 
+		```
 		# /usr/libexec/bacula/grant_mysql_privileges
 		# /usr/libexec/bacula/create_mysql_database -u root
 		# /usr/libexec/bacula/make_mysql_tables -u bacula
-	# sudo mysql_secure_installation
-	# mysql -u root -p
+		# sudo mysql_secure_installation
+		# mysql -u root -p
+		```
 	
 	UPDATE mysql.user SET Password=PASSWORD('jelszavad’) WHERE User='bacula';
 	FLUSH PRIVILEGES;
 	exit
 
-Boot inditás
+### Boot inditás
 
 	# sudo systemctl enable mariadb
 
-Bacula mysql használatának a beállítása
+### Bacula mysql használatának a beállítása
 
 	# sudo alternatives --config libbaccats.so
 
@@ -35,7 +37,7 @@ Bacula mysql használatának a beállítása
 
 	# 1
 	
-Bacula mentés és visszaállítás mappái létrehozása
+### Bacula mentés és visszaállítás mappái létrehozása
 
  	# sudo mkdir -p /bacula/backup /bacula/restore
 	# sudo chown -R bacula:bacula /bacula
@@ -43,7 +45,7 @@ Bacula mentés és visszaállítás mappái létrehozása
 	 # systemctl start bacula-sd
 
 
-Bacula jelszavak beállítása
+### Bacula jelszavak beállítása
 	
 	Director jelszavak
 
@@ -63,19 +65,19 @@ Bacula jelszavak beállítása
 	# sudo sed -i "s/@@FD_PASSWORD@@/${FD_PASSWORD}/" /etc/bacula/bacula-dir.conf
 	# sudo sed -i "s/@@FD_PASSWORD@@/${FD_PASSWORD}/" /etc/bacula/bacula-fd.conf
 
-Bacula inditása
+### Bacula inditása
 
 	# sudo systemctl start bacula-dir
 	# sudo systemctl start bacula-sd
 	# sudo systemctl start bacula-fd
 
-Inditás bootolásnál.
+### Inditás bootolásnál.
 
 	# sudo systemctl enable bacula-dir
 	# sudo systemctl enable bacula-sd
 	# sudo systemctl enable bacula-fd
 
-Label készítés
+### Label készítés
 	# sudo bconsole
 	* label
 	Enter new Volume name:
@@ -83,7 +85,7 @@ Label készítés
 	Select the Pool (1-3):
 	2
 
-HIBA elkerülése Setenforce beállítás permissive-re
+### HIBA elkerülése Setenforce beállítás permissive-re
 
 	ERR=Permission denied
 
