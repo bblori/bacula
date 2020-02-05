@@ -1,0 +1,24 @@
+Bacula Kliens telepítése Centos 7 -re.
+
+	# sudo yum install bacula-client
+	
+	// bacula-fd.conf — Név és jelszó frissítése
+
+	# sudo vi /etc/bacula/bacula-fd.conf
+
+	// Director {
+	// Name = BackupServer-dir
+	// Password = "Y2Q5ODUyMWM0YTFhYjA3NTcwYmU5OTA4Y"
+	//}
+
+	# sudo systemctl restart bacula-fd
+	# sudo systemctl enable bacula-fd
+	# sudo mkdir -p /bacula/restore
+	# sudo chown -R bacula:bacula /bacula
+	# sudo chmod -R 700 /bacula
+
+HIBA elkerülése Setenforce beállítás permissive-re
+
+	ERR=Permission denied
+
+	# /etc/selinux/config  csere permissive-re
