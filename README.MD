@@ -1,4 +1,4 @@
-Centos 7
+			Centos 7
 
 Bacula Server telepítése Centos 7-re.
 
