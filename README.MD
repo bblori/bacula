@@ -2,7 +2,7 @@
 
 ### Bacula Server telepítése Centos 7-re.
 
-	``` # sudo yum install -y bacula-director bacula-storage bacula-console bacula-client mariadb-server ```
+	# sudo yum install -y bacula-director bacula-storage bacula-console bacula-client mariadb-server
 
 ### MYSQL
 
@@ -10,17 +10,17 @@
 
 ### Adatbázis létrehozása
 
-		```
-		# /usr/libexec/bacula/grant_mysql_privileges
-		# /usr/libexec/bacula/create_mysql_database -u root
-		# /usr/libexec/bacula/make_mysql_tables -u bacula
-		# sudo mysql_secure_installation
-		# mysql -u root -p
-		```
-	
+	```
+	# /usr/libexec/bacula/grant_mysql_privileges
+	# /usr/libexec/bacula/create_mysql_database -u root
+	# /usr/libexec/bacula/make_mysql_tables -u bacula
+	# sudo mysql_secure_installation
+	# mysql -u root -p
+		
 	UPDATE mysql.user SET Password=PASSWORD('jelszavad’) WHERE User='bacula';
 	FLUSH PRIVILEGES;
 	exit
+	```
 
 ### Boot inditás
 
@@ -42,7 +42,7 @@
  	# sudo mkdir -p /bacula/backup /bacula/restore
 	# sudo chown -R bacula:bacula /bacula
 	# sudo chmod -R 700 /bacula
-	 # systemctl start bacula-sd
+	# systemctl start bacula-sd
 
 
 ### Bacula jelszavak beállítása
